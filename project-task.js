@@ -15,7 +15,6 @@ This activity helps practice spotting and fixing common JSON mistakes such as:
 - Invalid data types
 */
 
-
 // ============================================
 // 🧭 Instructions:
 // ============================================
@@ -39,36 +38,38 @@ but it contains multiple syntax errors that prevent it from being parsed.
 - A list of the corrections made and why each was necessary
 */
 
-
 // ============================================
 // 🔍 Provided JSON File with Errors
 // ============================================
 
 const invalidBookingJSON = `
 {
-  "hotelName": "Grand City Hotel",
-  "checkInDate": "2024-05-15"
-  "checkOutDate": "2024-05-20",
-  "guests": [
-    {
-      name: "Alice Johnson",
-      "age": 30,
-      "email": "alice.johnson@example.com"
-    },
-    {
-      "name": "Bob Smith",
-      "age": undefined,
-      "email": "bob.smith@example"
+    "hotelName": "Grand City Hotel",
+    "checkInDate": "2024-05-15",
+    "checkOutDate": "2024-05-20",
+    "guests": [
+        {
+            "name": "Alice Johnson",
+            "age": 30,
+            "email": "alice.johnson@example.com"
+        },
+        {
+            "name": "Bob Smith",
+            "age": null,
+            "email": "bob.smith@example"
+        }
+    ],
+    "roomDetails": {
+        "type": "Suite",
+        "pricePerNight": 200,
+        "amenities": [
+            "WiFi",
+            "Breakfast",
+            "Parking"
+        ]
     }
-  ],
-  "roomDetails": {
-    "type": "Suite",
-    "pricePerNight": 200,
-    "amenities": ["WiFi", "Breakfast", "Parking",]
-  }
 }
 `;
-
 
 // ============================================
 // ✅ Requirements
@@ -80,8 +81,16 @@ const invalidBookingJSON = `
   • What was wrong?
   • Why is it a problem in JSON?
   • What did you change to fix it?
-*/
 
+The code was missing a comma after "checkInDate": "2024-05-15". I added a comma at the end of this line to fix it. This is a problem because JSON cannot distinguish where one element ends and the next begins.
+
+The key "name" in the guests object was missing double quotation marks. I added " " around name to fix it. This is a problem because JSON requires all keys to be enclosed in double quotation marks.
+
+The value of undefined needed to be changed to null. This is a problem because undefined is not a recognized data type in JSON.
+
+The amenities array under roomDetails had an extra comma at the end of the array that needed to be removed.  This is a problem because unlike JavaScript, trailing commas are not acceptable in JSON.
+
+*/
 
 // ============================================
 // 🤔 Follow-Up Questions
@@ -92,10 +101,18 @@ const invalidBookingJSON = `
 
 1️⃣ What tools or techniques did you use to identify the errors?
 
+To correct the errors I first used a new .json file and reviewed the code in my code editor. My code editor made all errors stand out so I could correct them. I also used JSON lint and code beautify. Each of these tools let me know line by line by line where errors stood until I received a message that my code was valid. It was nice for the online tools to auto indent my work. 
+
 2️⃣ How did you confirm that your corrected JSON file was valid?
+
+The online tools such as JSON lint and code beautify gave me a green message telling me my code was valid. 
 
 3️⃣ Which errors were the most difficult to spot? Why?
 
+Missing curly braces or brackets might be the hardest to spot because the indention of the code can become thrown off, making them hard to quickly spot. 
+
 4️⃣ What strategies can help you avoid these kinds of errors in the future?
    (e.g., syntax highlighting, linters, writing JSON by example)
+Using online tools such as JSONLint and Code Beautify is really helpful for debugging. Also, using a code editor and a separate JSON file will make errors easier to spot.
+
 */
